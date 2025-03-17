@@ -1,5 +1,5 @@
 const joi = require('joi');
-const AppError = require('../utils/AppError');
+const AppError = require('../../utils/AppError');
 
 // create new user schema
 const newUserSchema = joi.object({
