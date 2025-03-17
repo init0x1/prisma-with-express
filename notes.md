@@ -31,3 +31,6 @@ npx prisma generate
 
 - we can push schema to database using ` npx prisma db push`  Or we can create a migration using `npx prisma migrate dev` and then push it to database using `npx prisma migrate deploy`
 
+### creating prisma client 
+- we need to create prisma client to work with database
+
