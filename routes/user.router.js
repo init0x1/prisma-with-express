@@ -1,5 +1,5 @@
 const express = require('express');
-const {validateNewUserData,validateUserLoginData} = require('../middlewares/validatior');
+const {validateNewUserData,validateUserLoginData} = require('../middlewares/validator/user.validator');
 const {createUser,userLogin} = require('../controllers/user.controller');
 
 
