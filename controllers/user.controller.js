@@ -1,6 +1,7 @@
 const express = require('express');
 const User = require('../models/user.model.js');
 const AppError = require('../utils/AppError');
+const { passwordHashing } = require('../utils/hashing');
 
 const userModel = new User();
 
@@ -9,7 +10,8 @@ const createUser = async (req, res,next) => {
     try {
 
         const { name, email, password } = req.body;
-        const newUser = await userModel.createUser(name, email, password);
+        const hashedPassword = await passwordHashing(password);
+        const newUser = await userModel.createUser(name, email, hashedPassword);
         
         newUser.password = undefined;
 
