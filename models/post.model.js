@@ -88,6 +88,45 @@ class Post{
         }
     }
 
+    async getPostWithComments(postId) {
+        try {
+            const post = await prisma.post.findUnique({
+                where: {
+                    id: postId
+                },
+                include: {
+                    author: {
+                        select: {
+                            id: true,
+                            name: true,
+                        }
+                    },
+                    comments: {
+                        include: {
+                            author: {
+                                select: {
+                                    id: true,
+                                    name: true,
+                                }
+                            }
+                        },
+                        orderBy: {
+                            createdAt: 'desc'
+                        }
+                    }
+                }
+            });
+    
+            if (!post) {
+                return null;
+            }
+    
+            return post;
+        } catch (error) {
+            throw new AppError('Error getting post with comments', 500, error);
+        }
+    }
+
     // update post 
     async updatePost(postId,authorId,title,content){
         try {

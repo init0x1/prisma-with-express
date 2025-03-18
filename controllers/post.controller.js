@@ -43,21 +43,29 @@ const getAllPosts = async (req, res,next) => {
     }
 }
 
-const getPostById = async (req, res,next) => {
+const getPostById = async (req, res, next) => {
     try {
-        const  postId = parseInt(req.params.id);
-        const post = await postModel.getPostById(postId);
-        if(post===null){
+        const postId = parseInt(req.params.id);
+        
+        const post = await postModel.getPostWithComments(postId);
+        
+        if (post === null) {
             throw new AppError('Post not found', 404);
         }
-        return res.status(200).json({ 
+        
+        const commentCount = post.comments.length;
+        
+        return res.status(200).json({
             status: 'success',
-            data: { post }
+            data: {
+                post,
+                commentCount
+            }
         });
-    }catch (error) {
+    } catch (error) {
         next(error);
     }
-}
+};
 
 const getPostsByUser = async (req, res, next) => {
     try {
