@@ -1,0 +1,457 @@
+{
+	"info": {
+		"_postman_id": "ed0c221c-5266-451f-a37c-8874396e515b",
+		"name": "prisma-with-express",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "42943737"
+	},
+	"item": [
+		{
+			"name": "create user",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"name\":\"Abdelrahman\",\n  \"email\":\"init0x1@gmail.com\",\n  \"password\":\"test@password\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://127.0.0.1:3000/users/"
+			},
+			"response": []
+		},
+		{
+			"name": "user login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"name\":\"Abdelrahman\",\n  \"email\":\"init0x1@gmail.com\",\n  \"password\":\"test@password\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://127.0.0.1:3000/users/"
+			},
+			"response": []
+		},
+		{
+			"name": "create Post",
+			"request": {
+				"auth": {
+					"type": "jwt",
+					"jwt": {
+						"algorithm": "HS256",
+						"isSecretBase64Encoded": false,
+						"payload": "{}",
+						"addTokenTo": "header",
+						"headerPrefix": "Bearer",
+						"queryParamKey": "token",
+						"header": "{}"
+					}
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2VtYWlsIjoiaW5pdDB4MUBnbWFpbC5jb20iLCJpYXQiOjE3NDIyNDkzMTcsImV4cCI6MTc0MjI1MjkxN30.a48k8xE6J6qQcZolI75xK7gjv3hfe0kWoMthfq6t0JQ",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"title\":\"Post title\",\n  \"content\":\"Post content\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://127.0.0.1:3000/posts/"
+			},
+			"response": []
+		},
+		{
+			"name": "get All Posts",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "jwt",
+					"jwt": {
+						"algorithm": "HS256",
+						"isSecretBase64Encoded": false,
+						"payload": "{}",
+						"addTokenTo": "header",
+						"headerPrefix": "Bearer",
+						"queryParamKey": "token",
+						"header": "{}"
+					}
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2VtYWlsIjoiaW5pdDB4MUBnbWFpbC5jb20iLCJpYXQiOjE3NDIzMDAyODgsImV4cCI6MTc0MjM4NjY4OH0.ayFbAE72mcX-0fm3u1_WM8FhFLtldqZvV_Oy4EuUhiI",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://127.0.0.1:3000/posts/"
+			},
+			"response": []
+		},
+		{
+			"name": "get post by id",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "jwt",
+					"jwt": {
+						"algorithm": "HS256",
+						"isSecretBase64Encoded": false,
+						"payload": "{}",
+						"addTokenTo": "header",
+						"headerPrefix": "Bearer",
+						"queryParamKey": "token",
+						"header": "{}"
+					}
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2VtYWlsIjoiaW5pdDB4MUBnbWFpbC5jb20iLCJpYXQiOjE3NDIzMDAyODgsImV4cCI6MTc0MjM4NjY4OH0.ayFbAE72mcX-0fm3u1_WM8FhFLtldqZvV_Oy4EuUhiI",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://127.0.0.1:3000/posts/5"
+			},
+			"response": []
+		},
+		{
+			"name": "get posts by user",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "jwt",
+					"jwt": {
+						"algorithm": "HS256",
+						"isSecretBase64Encoded": false,
+						"payload": "{}",
+						"addTokenTo": "header",
+						"headerPrefix": "Bearer",
+						"queryParamKey": "token",
+						"header": "{}"
+					}
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2VtYWlsIjoiaW5pdDB4MUBnbWFpbC5jb20iLCJpYXQiOjE3NDIyODM5MjAsImV4cCI6MTc0MjI4NzUyMH0.xeeGOWIjbJCL9YwazVz703CD-eJSzANkbSNdXXqNGXk",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://127.0.0.1:3000/posts/me"
+			},
+			"response": []
+		},
+		{
+			"name": "update post",
+			"request": {
+				"auth": {
+					"type": "jwt",
+					"jwt": {
+						"algorithm": "HS256",
+						"isSecretBase64Encoded": false,
+						"payload": "{}",
+						"addTokenTo": "header",
+						"headerPrefix": "Bearer",
+						"queryParamKey": "token",
+						"header": "{}"
+					}
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2VtYWlsIjoiaW5pdDB4MUBnbWFpbC5jb20iLCJpYXQiOjE3NDIyOTI4OTQsImV4cCI6MTc0MjI5NjQ5NH0.3ljNSLmOIsOQQe_3090g0w1SMVPUNLZ6wFA0H2V4_tM",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"title\":\"updated Post title\",\n  \"content\":\"Post content\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://127.0.0.1:3000/posts/7"
+			},
+			"response": []
+		},
+		{
+			"name": "delete post",
+			"request": {
+				"auth": {
+					"type": "jwt",
+					"jwt": {
+						"algorithm": "HS256",
+						"isSecretBase64Encoded": false,
+						"payload": "{}",
+						"addTokenTo": "header",
+						"headerPrefix": "Bearer",
+						"queryParamKey": "token",
+						"header": "{}"
+					}
+				},
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2VtYWlsIjoiaW5pdDB4MUBnbWFpbC5jb20iLCJpYXQiOjE3NDIyOTI4OTQsImV4cCI6MTc0MjI5NjQ5NH0.3ljNSLmOIsOQQe_3090g0w1SMVPUNLZ6wFA0H2V4_tM",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://127.0.0.1:3000/posts/7"
+			},
+			"response": []
+		},
+		{
+			"name": "create comment",
+			"request": {
+				"auth": {
+					"type": "jwt",
+					"jwt": {
+						"algorithm": "HS256",
+						"isSecretBase64Encoded": false,
+						"payload": "{}",
+						"addTokenTo": "header",
+						"headerPrefix": "Bearer",
+						"queryParamKey": "token",
+						"header": "{}"
+					}
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2VtYWlsIjoidGVzdDUxMkBnbWFpbC5jb20iLCJpYXQiOjE3NDIzMDA1NDgsImV4cCI6MTc0MjM4Njk0OH0.vNiSZLoISulGZVHqxf4TRXGOzIfpOvgAiMl9E9Ya0S0",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"content\":\"comment from test user\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://127.0.0.1:3000/posts/5/comments"
+			},
+			"response": []
+		},
+		{
+			"name": "get comments on post",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "jwt",
+					"jwt": {
+						"algorithm": "HS256",
+						"isSecretBase64Encoded": false,
+						"payload": "{}",
+						"addTokenTo": "header",
+						"headerPrefix": "Bearer",
+						"queryParamKey": "token",
+						"header": "{}"
+					}
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2VtYWlsIjoidGVzdDUxMkBnbWFpbC5jb20iLCJpYXQiOjE3NDIzMDA1NDgsImV4cCI6MTc0MjM4Njk0OH0.vNiSZLoISulGZVHqxf4TRXGOzIfpOvgAiMl9E9Ya0S0",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://127.0.0.1:3000/posts/5/comments"
+			},
+			"response": []
+		},
+		{
+			"name": "get comment by id",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "jwt",
+					"jwt": {
+						"algorithm": "HS256",
+						"isSecretBase64Encoded": false,
+						"payload": "{}",
+						"addTokenTo": "header",
+						"headerPrefix": "Bearer",
+						"queryParamKey": "token",
+						"header": "{}"
+					}
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2VtYWlsIjoidGVzdDUxMkBnbWFpbC5jb20iLCJpYXQiOjE3NDIzMDA1NDgsImV4cCI6MTc0MjM4Njk0OH0.vNiSZLoISulGZVHqxf4TRXGOzIfpOvgAiMl9E9Ya0S0",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://127.0.0.1:3000/comments/2"
+			},
+			"response": []
+		},
+		{
+			"name": "update comment",
+			"request": {
+				"auth": {
+					"type": "jwt",
+					"jwt": {
+						"algorithm": "HS256",
+						"isSecretBase64Encoded": false,
+						"payload": "{}",
+						"addTokenTo": "header",
+						"headerPrefix": "Bearer",
+						"queryParamKey": "token",
+						"header": "{}"
+					}
+				},
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2VtYWlsIjoidGVzdDUxMkBnbWFpbC5jb20iLCJpYXQiOjE3NDIzMDA1NDgsImV4cCI6MTc0MjM4Njk0OH0.vNiSZLoISulGZVHqxf4TRXGOzIfpOvgAiMl9E9Ya0S0",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"content\":\"updated from test user\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://127.0.0.1:3000/comments/2"
+			},
+			"response": []
+		},
+		{
+			"name": "delete comment",
+			"request": {
+				"auth": {
+					"type": "jwt",
+					"jwt": {
+						"algorithm": "HS256",
+						"isSecretBase64Encoded": false,
+						"payload": "{}",
+						"addTokenTo": "header",
+						"headerPrefix": "Bearer",
+						"queryParamKey": "token",
+						"header": "{}"
+					}
+				},
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2VtYWlsIjoidGVzdDUxMkBnbWFpbC5jb20iLCJpYXQiOjE3NDIzMDA1NDgsImV4cCI6MTc0MjM4Njk0OH0.vNiSZLoISulGZVHqxf4TRXGOzIfpOvgAiMl9E9Ya0S0",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://127.0.0.1:3000/comments/2"
+			},
+			"response": []
+		}
+	]
+}
