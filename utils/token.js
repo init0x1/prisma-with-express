@@ -3,7 +3,7 @@ const {TOKEN_SECRET} = require('../config');
 const AppError = require('./AppError');
 
 const generateToken = async(user_email) => {
-    return jwt.sign({ user_email }, TOKEN_SECRET, { expiresIn: '1h' });
+    return jwt.sign({ user_email }, TOKEN_SECRET, { expiresIn: '1d' });
 }
 
 const verifyToken = async(token) => {
