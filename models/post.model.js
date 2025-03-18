@@ -87,5 +87,38 @@ class Post{
             throw new AppError('Error getting post by author id', 500, error);
         }
     }
+
+    // update post 
+    async updatePost(postId,authorId,title,content){
+        try {
+            const post = await this.getPostById(postId);
+            if(!post){
+                throw new AppError('Post not found', 404);
+            }
+            
+            if(post.authorId !== authorId){
+                 throw new AppError('unauthorized', 401);
+                }
+            const updatedPost = await prisma.post.update({
+                where:{
+                    id:postId
+                },
+                data:{
+                    title,
+                    content
+                }
+            })
+            return updatedPost;
+        } catch (error) {
+            if (error instanceof AppError) {
+                throw error;  
+            }
+            throw new AppError('Error updating post', 500, error);
+        }
+    }
 }
+
+
+
+
 module.exports = Post;

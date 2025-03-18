@@ -75,11 +75,29 @@ const getPostsByUser = async (req, res, next) => {
     }
 };
 
+const updatePost = async (req,res,next)=>{
+    try {
+        const postId = parseInt(req.params.id);
+        const authorId = req.user.id;
+        const { title, content } = req.body;
+        const updatedPost = await postModel.updatePost(postId,authorId,title,content);
+        if(!updatedPost){
+            throw new AppError('Error updating post', 404);
+        }
+        return res.status(200).json({
+            status: 'success',
+            data: { updatedPost }
+        });
+    } catch (error) {
+        next(error);
+    }
+}
 
 
 module.exports = {
     createPost,
     getAllPosts,
     getPostById,
-    getPostsByUser
+    getPostsByUser,
+    updatePost
 };
