@@ -28,6 +28,58 @@ const createPost = async (req, res,next) => {
     }
 }
 
+const getAllPosts = async (req, res,next) => {
+    try {
+        const posts = await postModel.getAllPosts();
+        if(posts===null){
+            throw new AppError('there is no Posts to show', 404);
+        }
+        return res.status(200).json({ 
+            status: 'success',
+            data: { posts }
+        });
+    }catch (error) {
+        next(error);
+    }
+}
+
+const getPostById = async (req, res,next) => {
+    try {
+        const  postId = parseInt(req.params.id);
+        const post = await postModel.getPostById(postId);
+        if(post===null){
+            throw new AppError('Post not found', 404);
+        }
+        return res.status(200).json({ 
+            status: 'success',
+            data: { post }
+        });
+    }catch (error) {
+        next(error);
+    }
+}
+
+const getPostsByUser = async (req, res, next) => {
+    try {
+        const authorId = req.user.id; 
+        const posts = await postModel.getPostsByAuthorId(authorId);
+        if (posts === null) {
+            throw new AppError('There are no posts to show', 404);
+        }
+        return res.status(200).json({
+            status: 'success',
+            data: { posts },
+        });
+    } catch (error) {
+        next(error);
+    }
+};
 
 
-module.exports = {createPost};
+
+module.exports = {
+    createPost,
+    getAllPosts,
+    getPostById,
+    getPostsByUser
+};
