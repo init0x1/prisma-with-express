@@ -93,11 +93,29 @@ const updatePost = async (req,res,next)=>{
     }
 }
 
+const deletePost = async (req,res,next)=>{
+    try {
+        const postId = parseInt(req.params.id);
+        const authorId = req.user.id;
+        const deletedPost = await postModel.deletePost(postId,authorId);
+        if(!deletedPost){
+            throw new AppError('Error deleting post', 404);
+        }
+        return res.status(200).json({
+            status: 'success',
+            data: { deletedPost }
+        });
+    } catch (error) {
+        next(error);
+    }
+}
+
 
 module.exports = {
     createPost,
     getAllPosts,
     getPostById,
     getPostsByUser,
-    updatePost
+    updatePost,
+    deletePost
 };

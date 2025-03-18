@@ -116,6 +116,32 @@ class Post{
             throw new AppError('Error updating post', 500, error);
         }
     }
+
+    // delete post 
+    async deletePost(postId,authorId){
+        try {
+            const post = await this.getPostById(postId);
+            if(!post){
+                throw new AppError('Post not found', 404);
+            }
+            
+            if(post.authorId !== authorId){
+                 throw new AppError('unauthorized', 401);
+                }
+            const deletedPost = await prisma.post.delete({
+                where:{
+                    id:postId
+                }
+            })
+            return deletedPost;
+        } catch (error) {
+            if (error instanceof AppError) {
+                throw error;  
+            }
+            throw new AppError('Error deleting post', 500, error);
+        }
+    }
+
 }
 
 
